@@ -1,0 +1,197 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+body,
+h1,
+h2,
+h3,
+h4,
+p,
+figure,
+blockquote,
+dl,
+dd {
+  margin: 0;
+}
+
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+body {
+  min-height: 100vh;
+  text-rendering: optimizeSpeed;
+  line-height: 1.5;
+  font-family: 'Montserrat', sans-serif;
+  overflow-x: hidden;
+  scroll-behavior: smooth;
+}
+
+/* Make images easier to work with */
+img,
+picture {
+  max-width: 100%;
+  display: block;
+}
+
+/* Inherit fonts for inputs and buttons */
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+textarea {
+  resize: none;
+}
+
+button {
+  background-color: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* MAIN CONTAINER */
+.main-container {
+  margin: 30px;
+}
+
+/* REPOSITORY */
+.repository {
+  margin: 10px 0;
+}
+
+/* FORM CONTAINER */
+.form-container {
+  width: 500px;
+  margin: 20px auto;
+  background: #002bff59;
+  padding: 10px 20px;
+  border: 5px solid #465fda;
+  border-radius: 5px;
+}
+
+.form-container h3 {
+  text-transform: uppercase;
+  margin-bottom: 20px;
+  color: #fff;
+  border-bottom: 1px solid #fff;
+  padding-bottom: 5px;
+}
+
+.form-container label,
+.form-container button,
+.form-container select,
+.form-container input {
+  display: block;
+}
+
+.form-container select,
+.form-container input,
+.form-container textarea {
+  margin-bottom: 15px;
+  padding: 10px;
+  width: 100%;
+}
+
+.form-container button {
+  width: 100%;
+  padding: 10px;
+  text-transform: uppercase;
+  background-color: #465fda;
+  color: #fff;
+}
+
+/* ALERT MESSAGE */
+.alert-message {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  background-color: #ff7a7a;
+  border: 3px solid red;
+  padding: 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  color: #fff;
+  min-width: 500px;
+  opacity: 0;
+  animation: reveal-alert-message 0.75s ease 0.5s forwards;
+}
+
+@keyframes reveal-alert-message {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 60px;
+  height: 34px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #ccc;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 26px;
+  width: 26px;
+  left: 4px;
+  bottom: 4px;
+  background-color: white;
+  -webkit-transition: .4s;
+  transition: .4s;
+}
+
+input:checked + .slider {
+  background-color: #2196F3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}

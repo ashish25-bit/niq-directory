@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NIQ Employee Repository</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/static/css/style.css">
+</head>
+
+<body>
+  <div class="main-container">
+    {% if message %}
+    <div class="alert-message">{{ message }}</div>
+    {% endif %}
+    <h1>NIQ Employee Repository</h1>
+
+    <div class="repository">
+      {% for employee in data %}
+      <p>{{ employee }}</p>
+      {% endfor %}
+    </div>
+
+    <div class="form-container">
+      <h3>Add new employee</h3>
+      <form method="POST">
+        {% csrf_token %}
+        {{ form }}
+        <!-- <label for="is_manager" class="switch">
+          <input name="is_manager" type="checkbox" id="is_manager">
+          <span class="slider"></span>
+        </label> -->
+        <button type="submit">Add</button>
+      </form>
+    </div>
+  </div>
+</body>
+<script src="/static/js/app.js"></script>
+
+</html>
