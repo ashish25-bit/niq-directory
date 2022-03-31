@@ -72,3 +72,52 @@ def display(request):
 
 def custom_404_view(request, exception):
   return HttpResponse("Page not found")
+
+
+def update(request, id):
+  emp = Employee.objects.get(pk=id)
+
+  # update
+  if request.method == 'POST':
+    form = EmployeeForm(request.POST)
+
+    if form.is_valid():
+      name = form.cleaned_data['name']
+      email = form.cleaned_data['email']
+      role = form.cleaned_data['role']
+      department = form.cleaned_data['department']
+      reports_to = form.cleaned_data['reports_to']
+      location = form.cleaned_data['location']
+      is_manager = form.cleaned_data['is_manager']
+
+      emp.name = name;
+      emp.email = email;
+      emp.role = role;
+      emp.department = department;
+      emp.reports_to = reports_to;
+      emp.location = location;
+      emp.is_manager = is_manager;
+      emp.save();
+
+    return HttpResponseRedirect('/display')
+
+  initial = {
+    "name": emp.name,
+    "email": emp.email,
+    "role": emp.role,
+    "department": emp.department,
+    "reports_to": emp.reports_to,
+    "location": emp.location,
+    "is_manager": emp.is_manager
+  }
+
+  context = {
+    "employee_data": emp,
+    'form': EmployeeForm(initial=initial),
+  }
+
+  return render(request, 'update.html', context)
+
+
+def custom_404_view(request, exception):
+  return HttpResponse("Page not found")

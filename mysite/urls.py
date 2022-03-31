@@ -22,6 +22,7 @@ urlpatterns = [
     path('', include('niq.urls')),
     path('delete/', include('niq.urls')),
     path('display/', include('niq.urls')),
+    path('delete/<int:id>', include('niq.urls')),
 ]
 
 handler404 = 'niq.views.custom_404_view'

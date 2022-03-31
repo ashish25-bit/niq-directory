@@ -6,6 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Display Employee</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   <link rel="stylesheet" href="/static/css/style.css">
@@ -19,10 +21,7 @@
           <a class="nav-link active" href="/">Home</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="display">Display</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link disabled" href="update">Update</a>
+          <a class="nav-link" href="/display">Display</a>
         </li>
       </ul>
     </nav>
@@ -41,6 +40,7 @@
         <p>Is Manager: {{ employee.6 }}</p>
         {% endif %}
         <button data-id="{{employee.7}}">Delete</button>
+        <button><a href="/update/{{employee.7}}">Update</a></button>
       </div>
       {% endfor %}
     </div>
