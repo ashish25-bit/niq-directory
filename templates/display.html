@@ -1,61 +1,42 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Display Employee</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/style.css">
-</head>
+{% block body_data %}
+<div class="repository">
+  <h1>Employee list</h1>
+  <div class="table">
+    <div class="table-header">
+      <div class="header__item">Name</div>
+      <div class="header__item">Email</div>
+      <div class="header__item">Role</div>
+      <div class="header__item">Department</div>
+      <div class="header__item">Reports To</div>
+      <div class="header__item">Location</div>
+      <div class="header__item">Manager</div>
+      <div class="header__item"></div>
+      <div class="header__item"></div>
+    </div>
 
-<body>
-  <div class="main-container">
-    <nav>
-      <a class="nav-link active" href="/">Home</a>
-      <a class="nav-link" href="/display">Display</a>
-    </nav>
-
-    <div class="repository">
-      <h1>Employee list</h1>
-      <div class="table">
-        <div class="table-header">
-          <div class="header__item">Name</div>
-          <div class="header__item">Email</div>
-          <div class="header__item">Role</div>
-          <div class="header__item">Department</div>
-          <div class="header__item">Reports To</div>
-          <div class="header__item">Location</div>
-          <div class="header__item">Manager</div>
-          <div class="header__item"></div>
-          <div class="header__item"></div>
-        </div>
-
-        <div class="table-content">
-          {% for employee in data %}
-          <div class="table-row">
-            <div class="table-data">{{ employee.0 }}</div>
-            <div class="table-data">{{ employee.1 }}</div>
-            <div class="table-data">{{ employee.2 }}</div>
-            <div class="table-data">{{ employee.3 }}</div>
-            <div class="table-data">{{ employee.4 }}</div>
-            <div class="table-data">{{ employee.5 }}</div>
-            <div class="table-data">{{ employee.6 }}</div>
-            <button class="table-data" data-id="{{employee.7}}">Delete</button>
-            <a href="/update/{{employee.7}}" class="table-data">Update</a>
-          </div>
-          {% endfor %}
-        </div>
+    <div class="table-content">
+      {% for employee in data %}
+      <div class="table-row">
+        <div class="table-data">{{ employee.0 }}</div>
+        <div class="table-data">{{ employee.1 }}</div>
+        <div class="table-data">{{ employee.2 }}</div>
+        <div class="table-data">{{ employee.3 }}</div>
+        <div class="table-data">{{ employee.4 }}</div>
+        <div class="table-data">{{ employee.5 }}</div>
+        <div class="table-data">{{ employee.6 }}</div>
+        <button class="table-data" data-id="{{employee.7}}">Delete</button>
+        <a href="/update/{{employee.7}}" class="table-data">Update</a>
       </div>
+      {% endfor %}
     </div>
   </div>
+</div>
+{% endblock body_data %}
 
-  <script src="/static/js/utils.js"></script>
-  <script src="/static/js/alert.js"></script>
-  <script src="/static/js/display.js"></script>
-</body>
-
-</html>
+{% block javascript %}
+<script src="/static/js/utils.js"></script>
+<script src="/static/js/alert.js"></script>
+<script src="/static/js/display.js"></script>
+{% endblock javascript %}

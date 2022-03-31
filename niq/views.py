@@ -8,6 +8,7 @@ from datetime import date
 def index(request):
   context = {
     'form': EmployeeForm(),
+    'title': 'NIQ Employee Repository'
   }
 
   if request.method == 'POST':
@@ -73,7 +74,8 @@ def delete(request):
 
 def display(request):
   context = {
-    'data': []
+    'data': [],
+    'title': 'Display Employee'
   }
 
   context['data'] = Employee.objects.all().values_list('name', 'email', 'role', 'department', 'reports_to', 'location', 'is_manager', 'pk')
@@ -142,6 +144,7 @@ def update(request, id):
   context = {
     "employee_data": emp,
     'form': EmployeeForm(initial=initial),
+    'title': 'Update Employee'
   }
 
   return render(request, 'update.html', context)

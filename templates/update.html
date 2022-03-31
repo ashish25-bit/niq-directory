@@ -1,33 +1,12 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends 'base.html' %}
 
-<head>
-  <meta charset="UTF-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Update Employee</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="/static/css/style.css">
-</head>
-
-<body>
-  <div class="main-container">
-    <nav>
-      <a class="nav-link active" href="/">Home</a>
-      <a class="nav-link" href="/display">Display</a>
-    </nav>
-
-    <div class="form-container">
-      <h3>Update employee</h3>
-      <form method="POST">
-        {% csrf_token %}
-        {{ form }}
-        <button type="submit">Update</button>
-      </form>
-    </div>
-  </div>
-</body>
-
-</html>
+{% block body_data %}
+<div class="form-container">
+  <h3>Update employee</h3>
+  <form method="POST">
+    {% csrf_token %}
+    {{ form }}
+    <button type="submit">Update</button>
+  </form>
+</div>
+{% endblock body_data %}
