@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.http import HttpResponse
+from django.http import HttpResponse, HttpResponseRedirect
 from niq.forms import EmployeeForm
 import json
 from .models import Employee
@@ -8,8 +8,6 @@ from datetime import date
 def index(request):
   context = {
     'form': EmployeeForm(),
-    'message': "",
-    'data': []
   }
 
   if request.method == 'POST':
@@ -39,17 +37,12 @@ def index(request):
       if role == 'CEO':
         emp.reports_to = 'NA' 
         emp.save()
-        context["message"] = "Employee added successfully"
 
       elif reports_to in [manager.name for manager in managers]:
         emp.save()
-        context["message"] = "Employee added successfully"
 
-      else:
-        context["message"] = "Manager not present"
+      return HttpResponseRedirect('display')
 
-  data = Employee.objects.all().values_list('name', 'email', 'role', 'department', 'reports_to', 'location', 'is_manager', 'pk')
-  context["data"] = data
   return render(request, 'index.html', context)
 
 def delete(request):
@@ -67,6 +60,15 @@ def delete(request):
 
 
   return HttpResponse("No action")
+
+def display(request):
+  context = {
+    'data': []
+  }
+
+  context['data'] = Employee.objects.all().values_list('name', 'email', 'role', 'department', 'reports_to', 'location', 'is_manager', 'pk')
+  return render(request, 'display.html', context)
+
 
 def custom_404_view(request, exception):
   return HttpResponse("Page not found")
