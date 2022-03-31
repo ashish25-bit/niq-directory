@@ -161,6 +161,7 @@ button:disabled {
   0% {
     opacity: 0;
   }
+
   100% {
     opacity: 1;
   }
@@ -169,23 +170,57 @@ button:disabled {
 
 /* RESPOSITORY */
 .repository {
-  padding: 25px;
+  padding: 25px 0;
   display: grid;
   gap: 15px;
 }
 
-.repository .employee {
-  box-shadow: rgb(0 0 0 / 27%) 0px 1px 4px;
-  padding: 10px;
-  border-radius: 5px;
+.repository>.table {
+  width: 100%;
+  border: 1px solid #EEEEEE;
 }
 
-.repository button {
-  display: block;
-  margin-top: 10px;
-  padding: 10px;
-  border-radius: 5px;
+.repository .table-header {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr) repeat(2, 0.5fr);
+  width: 100%;
+  background-color: #000;
+  color: #fff;
+  padding: 18px 0;
+}
+
+.repository .table-row {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr) repeat(2, 0.5fr);
+  width: 100%;
+  padding: 18px 0;
+}
+
+.repository .table-row:nth-of-type(odd) {
+  background-color: #EEEEEE;
+}
+
+.repository .table-data,
+.repository .header__item {
+  /* flex: 1 1 20%; */
+  text-align: center;
+}
+
+.repository .header__item {
   text-transform: uppercase;
-  background-color: #ea4c4c;
+}
+
+.repository .table-row button {
+  background-color: #ff7a7a;
+  color: #fff;
+}
+
+.repository .table-row button {
+  background-color: #ff7a7a;
+  color: #fff;
+}
+
+.repository .table-row a {
+  background-color: #837aff;
   color: #fff;
 }

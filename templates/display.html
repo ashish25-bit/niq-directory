@@ -8,6 +8,7 @@
   <title>Display Employee</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.3.1/css/all.css">
   <link rel="stylesheet" href="/static/css/style.css">
@@ -28,28 +29,44 @@
 
     <div class="repository">
       <h1>Employee list</h1>
-      {% for employee in data %}
-      <div class="employee">
-        <p>Name: {{ employee.0 }}</p>
-        <p>Email: {{ employee.1 }}</p>
-        <p>Role: {{ employee.2 }}</p>
-        <p>Department: {{ employee.3 }}</p>
-        <p>Reports To: {{ employee.4 }}</p>
-        <p>Location: {{ employee.5 }}</p>
-        {% if employee.6 == True %}
-        <p>Is Manager: {{ employee.6 }}</p>
-        {% endif %}
-        <button data-id="{{employee.7}}">Delete</button>
-        <button><a href="/update/{{employee.7}}">Update</a></button>
+      <div class="table">
+        <div class="table-header">
+          <div class="header__item">Name</div>
+          <div class="header__item">Email</div>
+          <div class="header__item">Role</div>
+          <div class="header__item">Department</div>
+          <div class="header__item">Reports To</div>
+          <div class="header__item">Location</div>
+          <div class="header__item">Manager</div>
+          <div class="header__item"></div>
+          <div class="header__item"></div>
+        </div>
+
+        <div class="table-content">
+          {% for employee in data %}
+          <div class="table-row">
+            <div class="table-data">{{ employee.0 }}</div>
+            <div class="table-data">{{ employee.1 }}</div>
+            <div class="table-data">{{ employee.2 }}</div>
+            <div class="table-data">{{ employee.3 }}</div>
+            <div class="table-data">{{ employee.4 }}</div>
+            <div class="table-data">{{ employee.5 }}</div>
+            <div class="table-data">{{ employee.6 }}</div>
+            <button class="table-data" data-id="{{employee.7}}">Delete</button>
+            <a href="/update/{{employee.7}}" class="table-data">Update</a>
+          </div>
+          {% endfor %}
+        </div>
       </div>
-      {% endfor %}
     </div>
   </div>
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.slim.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.13.0/umd/popper.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/js/bootstrap.min.js"></script>
-  <script src="/static/js/app.js"></script>
+  <script src="/static/js/utils.js"></script>
+  <script src="/static/js/alert.js"></script>
+  <script src="/static/js/display.js"></script>
 </body>
 
 </html>
