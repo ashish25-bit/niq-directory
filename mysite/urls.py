@@ -20,7 +20,7 @@ from django.conf.urls import handler404
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include('niq.urls')),
-    path('sample/', include('niq.urls')),
+    path('delete/', include('niq.urls')),
 ]
 
 handler404 = 'niq.views.custom_404_view'

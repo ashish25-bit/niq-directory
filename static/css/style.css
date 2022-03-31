@@ -58,6 +58,11 @@ button {
   cursor: pointer;
 }
 
+button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
 /* MAIN CONTAINER */
 .main-container {
   margin: 30px;
@@ -176,4 +181,14 @@ button {
   box-shadow: rgb(0 0 0 / 27%) 0px 1px 4px;
   padding: 10px;
   border-radius: 5px;
+}
+
+.repository button {
+  display: block;
+  margin-top: 10px;
+  padding: 10px;
+  border-radius: 5px;
+  text-transform: uppercase;
+  background-color: #ea4c4c;
+  color: #fff;
 }

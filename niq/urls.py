@@ -19,5 +19,5 @@ from niq import views
 
 urlpatterns = [
     path("", views.index, name="home"),
-    path("sample/", views.sample, name="sample"),
+    path("delete/", views.delete, name="delete"),
 ]

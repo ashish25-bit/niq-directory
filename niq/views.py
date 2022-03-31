@@ -52,18 +52,21 @@ def index(request):
   context["data"] = data
   return render(request, 'index.html', context)
 
-def sample(request):
-  data = {
-    "name": request.GET.get('name'),
-    "prev": int(request.GET.get('prev')),
-    "next": int(request.GET.get('next')),
-    "data": [
-      "data",
-      "data2"
-    ]
-  }
-  data = json.dumps(data)
-  return HttpResponse(data)
+def delete(request):
+  method =  request.GET.get('method')
+
+  if method == 'DELETE':
+    name = request.GET.get('name')
+
+    if name == None:
+      return HttpResponse("No action")
+
+    # delete the employee
+    print(name)
+    return HttpResponse("Employee Deleted")
+
+
+  return HttpResponse("No action")
 
 def custom_404_view(request, exception):
   return HttpResponse("Page not found")
