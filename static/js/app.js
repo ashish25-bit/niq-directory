@@ -1,4 +1,4 @@
-const deleteBtns = document.querySelectorAll('[data-name]')
+const deleteBtns = document.querySelectorAll('[data-id]')
 
 // for removing the alert message container if present
 async function remove_alert_container() {
@@ -39,13 +39,11 @@ deleteBtns.forEach(btn => {
     if (!confirm('Confirm to delete'))
       return;
 
-    const name = e.target.dataset.name;
+    const id = e.target.dataset.id;
     const parent = e.target.parentElement;
     e.target.disabled = true;
 
-    await sleep(5000)
-
-    fetch(`http://localhost:8000/delete?method=DELETE&name=${name}`)
+    fetch(`http://localhost:8000/delete?method=DELETE&id=${id}`)
       .then(res => {
         if (isJSONSafe(res))
           return res.json();

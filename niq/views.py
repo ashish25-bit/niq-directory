@@ -48,7 +48,7 @@ def index(request):
       else:
         context["message"] = "Manager not present"
 
-  data = Employee.objects.all().values_list('name', 'email', 'role', 'department', 'reports_to', 'location', 'is_manager')
+  data = Employee.objects.all().values_list('name', 'email', 'role', 'department', 'reports_to', 'location', 'is_manager', 'pk')
   context["data"] = data
   return render(request, 'index.html', context)
 
@@ -56,13 +56,13 @@ def delete(request):
   method =  request.GET.get('method')
 
   if method == 'DELETE':
-    name = request.GET.get('name')
+    id = request.GET.get('id')
 
-    if name == None:
+    if id == None:
       return HttpResponse("No action")
 
     # delete the employee
-    print(name)
+    emp = Employee.objects.get(pk=id).delete()
     return HttpResponse("Employee Deleted")
 
 
