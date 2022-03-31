@@ -63,24 +63,52 @@ button:disabled {
   cursor: not-allowed;
 }
 
+a {
+  text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
+}
+
+:root {
+  --primary-background-color: #000;
+  --secondary-background-color: #15172b;
+  --secondary-background-color-light: #303245;
+
+  --app-red-color: #ea4f4f;
+  --app-blue-color: #4a4f7e;
+}
+
+body {
+  background-color: var(--primary-background-color);
+}
+
 /* MAIN CONTAINER */
 .main-container {
   margin: 30px;
 }
 
-/* REPOSITORY */
-.repository {
-  margin: 10px 0;
+nav {
+  width: 100%;
+  background-color: var(--secondary-background-color);
+  padding: 15px;
+  border-radius: 10px;
+  display: grid;
+  grid-template-columns: repeat(5, 100px);
+  margin-bottom: 30px;
+  color: #fff;
 }
 
 /* FORM CONTAINER */
 .form-container {
   width: 500px;
-  margin: 20px auto;
-  background: #002bff59;
-  padding: 10px 20px;
-  border: 5px solid #465fda;
-  border-radius: 5px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: var(--secondary-background-color);
+  border-radius: 20px;
+  box-sizing: border-box;
+  color: #fff;
 }
 
 .form-container h3 {
@@ -104,14 +132,19 @@ button:disabled {
   margin-bottom: 15px;
   padding: 10px;
   width: 100%;
+  background-color: var(--secondary-background-color-light);
+  border-radius: 12px;
+  border: none;
+  color: #fff;
 }
 
 .form-container button {
   width: 100%;
   padding: 10px;
   text-transform: uppercase;
-  background-color: #465fda;
+  background-color: var(--app-blue-color);
   color: #fff;
+  border-radius: 12px;
 }
 
 .form-container #id_is_manager {
@@ -119,8 +152,9 @@ button:disabled {
   position: relative;
   width: 40px;
   height: 20px;
-  background-color: #465fda;
+  background-color: var(--secondary-background-color-light);
   border-radius: 50px;
+  border: 2px solid var(--secondary-background-color-light);
 }
 
 .form-container #id_is_manager:before {
@@ -130,7 +164,7 @@ button:disabled {
   left: 0;
   height: 20px;
   width: 20px;
-  background-color: navy;
+  background-color: var(--secondary-background-color);
   border-radius: 50px;
   transition: all .5s;
 }
@@ -146,7 +180,7 @@ button:disabled {
   position: fixed;
   top: 10px;
   right: 10px;
-  background-color: #ff7a7a;
+  background-color: var(--app-red-color);
   border: 3px solid red;
   padding: 10px;
   border-radius: 5px;
@@ -173,6 +207,12 @@ button:disabled {
   padding: 25px 0;
   display: grid;
   gap: 15px;
+  padding-top: 0;
+}
+
+.repository h1 {
+  color: #fff;
+  text-transform: uppercase;
 }
 
 .repository>.table {
@@ -194,6 +234,7 @@ button:disabled {
   grid-template-columns: repeat(7, 1fr) repeat(2, 0.5fr);
   width: 100%;
   padding: 18px 0;
+  background-color: #ccc;
 }
 
 .repository .table-row:nth-of-type(odd) {
@@ -216,11 +257,11 @@ button:disabled {
 }
 
 .repository .table-row button {
-  background-color: #ff7a7a;
+  background-color: var(--app-red-color);
   color: #fff;
 }
 
 .repository .table-row a {
-  background-color: #837aff;
+  background-color: var(--app-blue-color);
   color: #fff;
 }
