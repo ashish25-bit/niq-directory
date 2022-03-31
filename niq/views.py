@@ -24,24 +24,31 @@ def index(request):
       location = form.cleaned_data['location']
       is_manager = form.cleaned_data['is_manager']
 
+      emp = Employee(
+        name=name,
+        email=email,
+        role=role,
+        department=department,
+        reports_to=reports_to,
+        location=location,
+        is_manager=is_manager,
+        created_date=date.today()
+      )
+
       managers = Employee.objects.filter(is_manager=True)
-      if reports_to in [manager.name for manager in managers]:
-        emp = Employee.objects.create(
-          name=name,
-          email=email,
-          role=role,
-          department=department,
-          reports_to=reports_to,
-          location=location,
-          is_manager=is_manager,
-          created_date=date.today()
-        )
+      if role == 'CEO':
+        emp.reports_to = 'NA' 
+        emp.save()
+        context["message"] = "Employee added successfully"
+
+      elif reports_to in [manager.name for manager in managers]:
+        emp.save()
         context["message"] = "Employee added successfully"
 
       else:
         context["message"] = "Manager not present"
 
-  data = Employee.objects.all()
+  data = Employee.objects.all().values_list('name', 'email', 'role', 'department', 'reports_to', 'location', 'is_manager')
   context["data"] = data
   return render(request, 'index.html', context)
 

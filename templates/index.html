@@ -20,8 +20,20 @@
     <h1>NIQ Employee Repository</h1>
 
     <div class="repository">
+      <h1>Employee list</h1>
       {% for employee in data %}
-      <p>{{ employee }}</p>
+      <div class="employee">
+        <p>Name: {{ employee.0 }}</p>
+        <p>Email: {{ employee.1 }}</p>
+        <p>Role: {{ employee.2 }}</p>
+        <p>Department: {{ employee.3 }}</p>
+        <p>Reports To: {{ employee.4 }}</p>
+        <p>Location: {{ employee.5 }}</p>
+        {% if employee.6 == True %}
+        <p>Is Manager: {{ employee.6 }}</p>
+        {% endif %}
+        <button data-name="{{employee.0}}">Delete</button>
+      </div>
       {% endfor %}
     </div>
 
@@ -30,10 +42,6 @@
       <form method="POST">
         {% csrf_token %}
         {{ form }}
-        <!-- <label for="is_manager" class="switch">
-          <input name="is_manager" type="checkbox" id="is_manager">
-          <span class="slider"></span>
-        </label> -->
         <button type="submit">Add</button>
       </form>
     </div>
