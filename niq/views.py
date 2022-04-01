@@ -129,7 +129,7 @@ def update(request, id):
 
     if isUpdated:
       return HttpResponseRedirect('/display?message=Employee-Updated-Successfully')
-    return HttpResponseRedirect(f'/display?message=Failed-To-Update')
+    return HttpResponseRedirect(f'/update/{id}?message=Failed-To-Update')
 
   initial = {
     "name": emp.name,
